@@ -36,7 +36,7 @@ public class Game {
 
             if (deck.getTopOfPlayPile().isWildCard()) {
                 Color newColor = deck.getColorToPlay();
-                System.out.println("The color is: " + ConsoleColor.getColor(newColor.name) + newColor.name + ConsoleColor.getColor("reset"));
+                System.out.println("The color is: " + ConsoleColor.getColor(newColor, newColor.name));
             }
 
             askUserInput.askPlayerToEnter3("Enter '3' to see your cards. ");
@@ -192,12 +192,14 @@ public class Game {
 
 
     private void playWildCard() {
-        int color = askUserInput.askChoice("""
-                    Which color do you choose?
-                    1.Red
-                    2.Green
-                    3.Blue
-                    4.Yellow""", 4);
+        StringBuilder colorOptions = new StringBuilder();
+        colorOptions.append("Which color do you choose?\n");
+        for (Color color : Color.values()) {
+            colorOptions.append((color.ordinal() + 1)).append(" - ").append(ConsoleColor.getColor(color, color.name));
+            colorOptions.append("\n");
+        }
+
+        int color = askUserInput.askChoice(colorOptions.toString(), 4);
         Color newColor = Color.values()[color - 1];
         deck.setColorToPlay(newColor);
     }

@@ -9,18 +9,18 @@ public class Card {
     public Card (Color color, Number number) {
         this.color = color;
         this.number = number;
-        this.description = ConsoleColor.getColor(color.name) + color.name + " " + number.name + ConsoleColor.getColor("reset");
+        this.description = color.name + " " + number.name;
     }
 
     public Card (Color color, Action action) {
         this.color = color;
         this.action = action;
-        this.description = ConsoleColor.getColor(color.name) + color.name + " " + action.name + ConsoleColor.getColor("reset");
+        this.description = color.name + " " + action.name;
     }
     
     public Card (Action action) {
         this.action = action;
-        this.description = ConsoleColor.getColor("purple") + action.name + ConsoleColor.getColor("reset");
+        this.description = action.name;
     }
     
     public Number getNumber() {
@@ -45,6 +45,6 @@ public class Card {
     
     @Override
     public String toString() {
-        return description;
+        return ConsoleColor.getColor(color, description);
     }
 }
