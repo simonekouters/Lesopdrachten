@@ -1,11 +1,11 @@
 package cards;
 
 public enum Number {
-    ZERO("Zero"), ONE("One"), TWO("Two"), THREE("Three"), FOUR("Four"), FIVE("Five"),
-    SIX("Six"), SEVEN("Seven"), EIGHT("Eight"), NINE("Nine"); 
+    ZERO(0), ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5),
+    SIX(6), SEVEN(7), EIGHT(8), NINE(9);
 
-    public final String name;
-    private Number(String name) {
+    public final int name;
+    private Number(int name) {
         this.name = name;
     }
 }
