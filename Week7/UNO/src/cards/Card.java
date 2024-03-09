@@ -9,7 +9,7 @@ public class Card {
     public Card (Color color, Number number) {
         this.color = color;
         this.number = number;
-        this.description = color.name + " " + number.name;
+        this.description = color.name + " " + number.value;
     }
 
     public Card (Color color, Action action) {

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Deck {
     private final List<Card> drawPile = new ArrayList<>();
-    private List<Card> playPile = new ArrayList<>();
+    private final List<Card> playPile = new ArrayList<>();
     private Color colorToPlay;
     
     public Deck() {
