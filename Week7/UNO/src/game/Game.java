@@ -31,7 +31,8 @@ public class Game {
  
         while (true) {
             Player currentPlayer = players.get(currentPlayerIndex);
-            System.out.println(currentPlayer.getName() + ", it's your turn.");
+            printAmountOfCardsOfPlayers();
+            System.out.println("\n" + currentPlayer.getName() + ", it's your turn.");
             System.out.println("\nTop of the pile: " + deck.getTopOfPlayPile());
 
             if (deck.getTopOfPlayPile().isWildCard()) {
@@ -85,6 +86,12 @@ public class Game {
             }
             playActionCard(deck.getTopOfPlayPile(), playerToStart);
             firstCard = false;
+        }
+    }
+
+    private void printAmountOfCardsOfPlayers() {
+        for (Player player : players) {
+            System.out.println(player.getName() + " - " + player.getHand().size() + " cards");
         }
     }
 
