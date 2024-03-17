@@ -74,7 +74,7 @@ public class Lobby {
     private void playGame(List<Player> players) {
         Player startingPlayer = decideWhoStarts(players);
         int startingPlayerIndex = players.indexOf(startingPlayer);
-        Game game = new Game(players, scanner, startingPlayerIndex);
+        Game game = new Game(players, startingPlayerIndex);
         game.start();
     }
 

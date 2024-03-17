@@ -5,7 +5,6 @@ import player.Player;
 import player.Scoring;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class Game {
     private static final int MAX_SCREEN_HEIGHT = 50;
@@ -13,14 +12,12 @@ public class Game {
     private final List<Player> players;
     private final Deck deck = new Deck();
     private final AskUserInput askUserInput = new AskUserInput();
-    private final Scanner scanner;
     private int currentPlayerIndex;
     private boolean reverseTurn = false;
     private boolean firstCard = false;
     
-    public Game(List<Player> players, Scanner scanner, int startingPlayerIndex) {
+    public Game(List<Player> players, int startingPlayerIndex) {
         this.players = players;
-        this.scanner = scanner;
         this.currentPlayerIndex = startingPlayerIndex;
     }
 
@@ -168,6 +165,7 @@ public class Game {
             if (!playingCardAfterDraw) {
                 askDrawOrPlay(player);
             } else {
+                // if the card is played after drawing it, and it can't be played, your turn is over
                 System.out.println("Your turn is over. ");
                 askUserInput.askPlayerToEnter3("Enter '3' to go to the next player. ");
             }
@@ -179,6 +177,7 @@ public class Game {
 
 
     private void playActionCard(Card cardToPlay, Player player) {
+        // if the first card of the game is an action card, the first player should get the consequences
         Player nextPlayer = (firstCard) ? player : players.get(getNextPlayerIndex());
 
         switch (cardToPlay.getAction()) {
@@ -213,6 +212,7 @@ public class Game {
 
 
     private void makeNextPlayerDrawCard(Player nextPlayer, int amountOfCards) {
+        // the screen should be cleared so that the next player doesn't see the cards of the previous player
         if (!firstCard) {
             clearScreen();
         }
